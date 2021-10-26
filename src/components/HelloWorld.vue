@@ -1,59 +1,81 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
+  <div>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+      <li v-for="item in games" :key="item.games">
+        {{ item.title }}
+        <img src="../assets/logo.png" alt="Game logo missing">
+        <button class="favorites" v-show="item.isFavorite === false" v-on:click="addFavorite(item)">♡</button>
+        <button class="favorites" v-show="item.isFavorite === true" v-on:click="removeFavorite(item)">Remove fav
+        </button>
+        <button class="demo" v-show="item.hasDemo === true">DEMO</button>
+      </li>
+      <button class="test" v-on:click="favoritesCount(games)">TEST</button>
     </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <br>
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      |
+      <router-link to="/favorites" v-for="item in games" :key="item.games">Favorites
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
-</script>
+import states from "../data/data.json";
 
+export default {
+  name: "HelloWorld",
+  computed: {
+    games() {
+      return states.games.map((item) => {
+        return item;
+      })
+    }
+  },
+  methods: {
+favoritesCount(games){
+  for (let i = 0; i < games.length; i++){
+    console.log(games.isFavorite)
+    if (games.isFavorite === true){
+      i= i+1;
+      console.log(i);
+    }
+  }
+},
+addFavorite(item)
+{
+  console.log(item.isFavorite)
+  item.isFavorite = true;
+  console.log(item.isFavorite)
+}
+,
+removeFavorite(item)
+{
+  console.log(item.isFavorite)
+  item.isFavorite = false;
+  console.log(item.isFavorite)
+}
+},
+}
+;
+</script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
