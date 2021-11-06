@@ -1,14 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-Vue.use(Vuex)
+import {games} from "@/store/games";
+
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+    modules: {
+        games,
+    }
+});

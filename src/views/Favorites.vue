@@ -1,5 +1,17 @@
 <template>
   <div class="favorites">
-    <h1>This is favorite games page</h1>
+    <FavoriteGames msg="Favorites Page"/>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import FavoriteGames from '@/components/FavoriteGames.vue'
+
+export default {
+  name: 'Favorites',
+  components: {
+    FavoriteGames
+  }
+}
+</script>
