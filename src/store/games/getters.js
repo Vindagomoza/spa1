@@ -14,6 +14,6 @@ export const getters = {
                 return game
             }
             return ''
-        })
+        }).filter(x => x !=='');
     }
 }

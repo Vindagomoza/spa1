@@ -4,7 +4,7 @@
     <div class="container">
       <div class="game" v-for="item in getAllGames" :key="item.id">
         <p class="game-name">
-          {{ item.title }}
+          {{ item.title}}
         </p>
         <div class="game-content">
           <img
@@ -45,7 +45,9 @@ export default {
         this.$store.commit('updateFavoriteGames', game);
       }
     },
-
+    fav(){
+      this.button.set.text('unfavorite')
+    },
     isFavorite(game) {
       if (this.getFavorites.includes(game.id)) {
         return 'favorite-game'

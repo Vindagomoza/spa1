@@ -2,7 +2,7 @@
   <div>
     <h2>Favorite Games</h2>
     <div class="container">
-      <div class="game"  v-for="item in getFavGames" :key="item">
+      <div class="game"  v-for="item in getFavGames" :key="item +'1'">
         <p class="game-name">
           {{item.title}}
         </p>
