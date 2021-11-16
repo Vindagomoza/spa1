@@ -6,7 +6,7 @@
 
 <script>
 // @ is an alias to /src
-import AllGames from '@/components/AllGames.vue'
+import AllGames from '@/components/AllGamesContainer.vue'
 
 export default {
   name: 'Home',
