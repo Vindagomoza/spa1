@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-  <AllGames msg="Welcome to Your Vue.js App"/>
+  <AllGames/>
   </div>
 </template>
 

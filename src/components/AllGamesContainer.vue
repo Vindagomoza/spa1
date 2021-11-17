@@ -2,7 +2,7 @@
   <div>
     <h2>Games page</h2>
     <div class="container">
-      <GameList :getAllGames="getAllGames"/>
+      <Game :getAllGames="getAllGames" v-bind:property="item.title"/>
 <!--      <div class="game" v-for="item in getAllGames" :key="item.id">-->
 <!--        <p class="game-name">-->
 <!--          {{ item.title}}-->
@@ -32,11 +32,11 @@
 
 
 import {mapActions, mapGetters} from "vuex";
-import GameList from "./GameList";
+import Game from "./Game";
 
 export default {
   name: "AllGames",
-  components: {GameList},
+  components: {Game},
   methods: {
     ...mapActions(['fetchGames']),
 

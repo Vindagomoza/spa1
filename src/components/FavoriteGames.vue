@@ -14,10 +14,9 @@
           >
           <div class="game-buttons">
             <button v-if="item.hasDemo">DEMO</button>
-            <button
-                :class="isFavorite(item)"
-                @click="addToFavorites(item)"
-            >{{ favorite ? 'Unfavorite' : 'Favorite' }}</button>
+            <vs-button :class="isFavorite(item)"
+                       @click="addToFavorites(item)"
+                       color="danger" type="gradient" style="min-width: 120px">{{ favorite ? 'Unfavorite' : 'favorite' }}</vs-button>
           </div>
         </div>
       </div>

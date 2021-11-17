@@ -1,6 +1,6 @@
 <template>
   <div class="favorites">
-    <FavoriteGames msg="Favorites Page"/>
+    <FavoriteGames />
   </div>
 </template>
 
