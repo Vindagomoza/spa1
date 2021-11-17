@@ -2,7 +2,7 @@
   <div>
     <h2>Games page</h2>
     <div class="container">
-      <Game :getAllGames="getAllGames" v-bind:property="item.title"/>
+      <GameList/>
 <!--      <div class="game" v-for="item in getAllGames" :key="item.id">-->
 <!--        <p class="game-name">-->
 <!--          {{ item.title}}-->
@@ -32,33 +32,31 @@
 
 
 import {mapActions, mapGetters} from "vuex";
-import Game from "./Game";
+import GameList from "./GameList";
 
 export default {
   name: "AllGames",
-  components: {Game},
+  components: {GameList},
   methods: {
     ...mapActions(['fetchGames']),
-
-
-    addToFavorites(game) {
-      if (this.getFavorites.includes(game.id)){
-        return this.$store.commit('DELETE_GAME', game);
+              addToFavorites(game) {
+        if (this.getFavorites.includes(game.id)){
+          return this.$store.commit('DELETE_GAME', game);
         }
-      else{
-        this.$store.commit('updateFavoriteGames', game);
-      }
-    },
-    fav(){
-      this.button.set.text('unfavorite')
-    },
-    isFavorite(game) {
-      if (this.getFavorites.includes(game.id)) {
-        this.favorite = true;
-        return 'favorite-game'
-      }
-      this.favorite = false;
-      return '';
+        else{
+          this.$store.commit('updateFavoriteGames', game);
+        }
+      },
+      fav(){
+        this.button.set.text('unfavorite')
+      },
+      isFavorite(game) {
+        if (this.getFavorites.includes(game.id)) {
+          this.favorite = true;
+          return 'favorite-game'
+        }
+        this.favorite = false;
+        return '';
     }
   },
   computed: {
@@ -73,7 +71,41 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
-.link {
-  padding-right: 40px;
-}
+  .link {
+    padding-right: 40px;
+  }
+
+  .favorite-game {
+    background-color: red;
+  }
+
+  .game-buttons,
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+  }
+
+  .game-name {
+    width: 100%;
+    text-align: start;
+  }
+
+  .game {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    width: 300px;
+  }
+
+  .game-content {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .game-buttons {
+    justify-content: space-between;
+    padding-left: 20px;
+    min-width: 80px;
+  }
 </style>
