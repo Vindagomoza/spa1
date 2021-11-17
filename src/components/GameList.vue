@@ -1,15 +1,45 @@
 <template>
     <div>
-        <Game/>
+        <div class="game" v-for="item in getAllGames" :key="item.id">
+            <Game v-bind:item="item"
+                  v-bind:addToFavorites= "addToFavorites"
+                  v-bind:isFavorite = "isFavorite"
+            />
+        </div>
     </div>
 </template>
 
 <script>
+    import {mapActions, mapGetters} from "vuex";
     import Game from "./Game";
     export default {
         name: "GameList",
         components:{Game},
         methods: {
+            ...mapActions(['fetchGames']),
+            addToFavorites(game) {
+                if (this.getFavorites.includes(game.id)){
+                    return this.$store.commit('DELETE_GAME', game);
+                }
+                else{
+                    this.$store.commit('updateFavoriteGames', game);
+                }
+            },
+            isFavorite(game) {
+                if (this.getFavorites.includes(game.id)) {
+                    this.favorite = true;
+                    return 'favorite-game'
+                }
+                this.favorite = false;
+                return '';
+            }
+        },
+        computed: {
+            ...mapGetters(['getAllGames', 'getFavorites','favoritesCount'])
+        },
+        data: () => ({}),
+        async mounted() {
+            await this.fetchGames();
         }
     };
 </script>
