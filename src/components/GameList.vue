@@ -1,10 +1,7 @@
 <template>
     <div>
-        <div class="game" v-for="item in getAllGames" :key="item.id">
-            <Game v-bind:item="item"
-                  v-bind:addToFavorites= "addToFavorites"
-                  v-bind:isFavorite = "isFavorite"
-            />
+        <div class="game" v-for="item in getAllGames" :key="item[1]">
+            <Game v-bind:game="item"/>
         </div>
     </div>
 </template>
