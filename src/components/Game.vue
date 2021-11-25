@@ -9,12 +9,12 @@
                     v-bind:src="'https://picsum.photos/id/' + game.id + '/200/200'"
                     alt="Game logo missing"
             >
-<!--            <div class="game-buttons">-->
-<!--                <button v-if="game.hasDemo">DEMO</button>-->
-<!--                <vs-button :class="isFavorite(game)"-->
-<!--                           @click="addToFavorites(game)"-->
+            <div class="game-buttons">
+                <button v-if="game.hasDemo">DEMO</button>
+<!--                <vs-button :class="$emit('is-favorite')"-->
+<!--                           @click="$emit('add-to-favorites')"-->
 <!--                           color="danger" type="gradient" style="min-width: 120px">{{ favorite ? 'Unfavorite' : 'favorite' }}</vs-button>-->
-<!--            </div>-->
+            </div>
         </div>
     </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="game" v-for="item in getAllGames" :key="item[1]">
-            <Game v-bind:game="item"/>
+            <Game v-bind:game="item" @add-to-favorites="addToFavorites"/>
         </div>
     </div>
 </template>
